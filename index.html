@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>亲爱的一家人贵州八月自驾行程</title>
+    <link href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-100-M/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@9.1.7/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #4a90e2; /* Softer Blue */
+            --secondary-color: #f0f4f8; /* Light Grayish Blue */
+            --accent-color: #f5a623; /* Warm Orange */
+            --text-color: #333;
+            --text-color-light: #f8f9fa;
+            --background-gradient-start: #6599FF; /* Brighter Blue for Gradient Start */
+            --background-gradient-end: #3A5FCD;   /* Deeper Blue for Gradient End */
+            --card-background: rgba(255, 255, 255, 0.95); /* Slightly more opaque card */
+            --timeline-line-color: #d1d5db; /* Light Gray */
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, var(--background-gradient-start), var(--background-gradient-end));
+            color: var(--text-color-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .background-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0),
+                radial-gradient(circle at 10px 10px, rgba(255,255,255,0.03) 1px, transparent 0);
+            background-size: 20px 20px;
+            z-index: 0;
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .floating-circle {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .floating-circle:nth-child(1) { width: 100px; height: 100px; top: 10%; left: 5%; animation-duration: 22s; }
+        .floating-circle:nth-child(2) { width: 150px; height: 150px; top: 20%; left: 80%; animation-duration: 25s; }
+        .floating-circle:nth-child(3) { width: 80px; height: 80px; top: 70%; left: 15%; animation-duration: 18s; }
+        .floating-circle:nth-child(4) { width: 120px; height: 120px; top: 80%; left: 60%; animation-duration: 28s; }
+        .floating-circle:nth-child(5) { width: 60px; height: 60px; top: 40%; left: 40%; animation-duration: 15s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+            25% { transform: translateY(-20px) translateX(15px) rotate(45deg); }
+            50% { transform: translateY(10px) translateX(-10px) rotate(90deg); }
+            75% { transform: translateY(-15px) translateX(20px) rotate(135deg); }
+        }
+
+        .container {
+            max-width: 1000px; /* Adjusted for better timeline readability */
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.2); /* Semi-transparent dark background for header */
+            backdrop-filter: blur(5px);
+            animation: slideDown 1s ease-out;
+        }
+
+        .title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.8rem; /* Slightly larger for impact */
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #ffefba, #ffffff, #ffefba);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradientShift 5s ease infinite;
+        }
+
+        .subtitle {
+            font-size: 1.1rem; /* Adjusted for readability */
+            color: var(--text-color-light);
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+        .subtitle span {
+            font-weight: 500;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 3px; /* Thicker line */
+            background-color: var(--timeline-line-color);
+            opacity: 0.5;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px; /* Adjust for thicker line */
+        }
+
+        .day-section {
+            margin-bottom: 50px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .day-header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative; /* For z-index if needed */
+        }
+
+        .day-badge {
+            font-family: 'Noto Serif SC', serif;
+            display: inline-block;
+            padding: 12px 25px; /* Larger badge */
+            background-color: var(--accent-color);
+            color: var(--text-color); /* Darker text on accent for contrast */
+            font-size: 1.5rem; /* Larger font */
+            font-weight: 600;
+            border-radius: 50px; /* Pill shape */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+
+        .itinerary-item {
+            padding: 10px 0; /* Reduced vertical padding */
+            position: relative;
+            width: 50%;
+        }
+
+        .itinerary-item.left {
+            left: 0;
+            padding-right: 40px; /* Space for timeline line */
+            text-align: right;
+        }
+
+        .itinerary-item.right {
+            left: 50%;
+            padding-left: 40px; /* Space for timeline line */
+            text-align: left;
+        }
+
+        .item-card {
+            background: var(--card-background);
+            color: var(--text-color);
+            border-radius: 10px; /* Slightly larger radius */
+            padding: 20px; /* More padding */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid var(--primary-color); /* Accent border */
+        }
+        .itinerary-item.right .item-card {
+            border-left: none;
+            border-right: 5px solid var(--primary-color);
+        }
+
+
+        .item-card:hover {
+            transform: translateY(-8px) scale(1.02); /* More pronounced hover */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .time-badge {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .time-badge i {
+            margin-right: 8px;
+        }
+
+        .location-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.3rem; /* Larger title */
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .location-title i {
+            margin-right: 10px; /* More space for icon */
+            color: var(--accent-color);
+        }
+
+        .description {
+            font-size: 0.95rem; /* Slightly larger description */
+            line-height: 1.7;
+            margin-bottom: 10px;
+            color: #555; /* Darker gray for better readability */
+        }
+        .description strong {
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        .description .highlight {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+        .description .meal-option { margin-top: 5px; display: block; }
+        .description .meal-option .price { margin-left: 5px; color: #777; }
+        .description .meal-option .spice { margin-left: 5px; color: #e53e3e; } /* Red for spice */
+        .story-hook {
+            background-color: #fffbe6; /* Light yellow for story hooks */
+            border-left: 3px solid var(--accent-color);
+            padding: 8px 12px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #773d00; /* Dark orange text */
+        }
+        .story-hook i { margin-right: 5px; }
+
+
+        .tags {
+            margin-top: 10px;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: #555;
+            padding: 5px 10px; /* Slightly larger tags */
+            border-radius: 20px; /* Pill shape */
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .timeline-dot {
+            content: '';
+            position: absolute;
+            width: 18px; /* Larger dot */
+            height: 18px;
+            background-color: var(--text-color-light); /* White dot */
+            border: 4px solid var(--primary-color); /* Primary color border */
+            top: 20px; /* Adjust based on card padding */
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 0 10px rgba(var(--primary-color-rgb), 0.5); /* Glow effect */
+        }
+
+        .itinerary-item.left .timeline-dot {
+            right: -9px; /* (18px dot width / 2) */
+        }
+
+        .itinerary-item.right .timeline-dot {
+            left: -9px; /* (18px dot width / 2) */
+        }
+
+        /* Supplementary Sections Styling */
+        .supplementary-section {
+            background: var(--card-background);
+            color: var(--text-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease-out;
+            border-top: 5px solid var(--accent-color); /* Accent top border */
+        }
+
+        .supplementary-section h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        .supplementary-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .supplementary-section ul li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .supplementary-section ul li::before {
+            content: "\f00c"; /* Font Awesome check icon */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+        .supplementary-section p {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+        .supplementary-section .highlight {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+        .mermaid-container {
+            background-color: #f9f9f9; /* Lighter background for mermaid charts */
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            margin: 1.5rem auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #eee;
+        }
+         .mermaid-container .mermaid {
+            font-size: 0.9em; /* Adjust font size within Mermaid diagrams */
+        }
+
+
+        /* Animations */
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px; /* Shift timeline to left for mobile */
+            }
+
+            .itinerary-item {
+                width: 100%;
+                padding-left: 70px; /* Adjust padding for items */
+                padding-right: 0;
+                text-align: left; /* All items align left */
+            }
+             .itinerary-item.left, .itinerary-item.right {
+                left: 0;
+                padding-left: 70px;
+                padding-right: 0; /* Reset padding */
+                text-align: left;
+            }
+
+            .itinerary-item.left .item-card, .itinerary-item.right .item-card {
+                border-left: 5px solid var(--primary-color); /* Consistent border */
+                border-right: none;
+            }
+
+
+            .timeline-dot {
+                left: 21px; /* Position dot on the new timeline */
+            }
+            .itinerary-item.left .timeline-dot, .itinerary-item.right .timeline-dot {
+                left: 21px; /* Consistent dot position */
+            }
+
+
+            .title { font-size: 2rem; }
+            .subtitle { font-size: 1rem; }
+            .day-badge { font-size: 1.2rem; padding: 10px 20px; }
+            .location-title { font-size: 1.1rem; }
+            .description { font-size: 0.9rem; }
+
+            .floating-circle:nth-child(2), .floating-circle:nth-child(4) { display: none; } /* Hide some for less clutter */
+        }
+
+        .accommodation-dining-summary ul li::before,
+        .practical-info-section ul li::before,
+        .rafting-options-card ul li::before,
+        .other-attractions-card ul li::before {
+            content: "\f054"; /* Font Awesome right arrow for these lists */
+        }
+
+/* Bento Grid Styles */
+.bento-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
+    gap: 20px; /* Space between bento boxes */
+    padding: 20px 0; /* Padding around the grid container */
+    margin-top: 30px; /* Space above the bento grid section */
+}
+
+.bento-box {
+    background: var(--card-background); /* Uses existing card background for consistency */
+    color: var(--text-color);
+    border-radius: 12px; /* Consistent with other supplementary sections */
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-top: 4px solid var(--accent-color); /* Accent like previous supplementary sections */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bento-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.bento-box h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-top: 0; /* Remove default margin */
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 8px;
+}
+
+.bento-box ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0; /* Remove default margin */
+}
+
+.bento-box ul li {
+    margin-bottom: 10px;
+    padding-left: 22px; /* Space for icon */
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.bento-box ul li::before {
+    content: "\f054"; /* Font Awesome right arrow, can be changed per box if needed */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    top: 3px; /* Adjust for vertical alignment */
+}
+
+.bento-box p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+.bento-box p:last-child {
+    margin-bottom: 0;
+}
+
+.bento-box .highlight { /* Re-using existing highlight style */
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+/* Specific icon examples if needed for different bento boxes */
+.bento-box.accommodation-tips ul li::before {
+    content: "\f594"; /* fas fa-bed */
+}
+.bento-box.dining-tips ul li::before {
+    content: "\f2e7"; /* fas fa-utensils */
+}
+.bento-box.policies-apps ul li::before {
+    content: "\f1c9"; /* fas fa-file-alt */
+}
+.bento-box.scenic-spot-tips ul li::before {
+    content: "\f550"; /* fas fa-map-marked-alt */
+}
+.bento-box.travel-prep ul li::before {
+    content: "\f57b"; /* fas fa-suitcase-rolling */
+}
+.bento-box.health-emergency ul li::before {
+    content: "\f481"; /* fas fa-medkit */
+}
+.bento-box.packing-list ul li::before {
+    content: "\f0f6"; /* fas fa-clipboard-list */
+}
+.bento-box.rafting-tips ul li::before {
+    content: "\f740"; /* fas fa-water - ensure FA includes this or pick another, e.g., \f2cc (tint) */
+}
+.bento-box.alternative-attractions ul li::before {
+    content: "\f279"; /* fas fa-map-pin */
+}
+
+/* Responsive adjustments for bento grid if needed */
+@media (max-width: 600px) {
+    .bento-grid-container {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+    .bento-box h3 {
+        font-size: 1.25rem;
+    }
+    .bento-box ul li, .bento-box p {
+        font-size: 0.9rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="title">亲爱的一家人贵州八月自驾行程</h1>
+            <p class="subtitle"><span>日期：</span>2025年8月1日 - 2025年8月10日 (共10天)</p>
+            <p class="subtitle"><span>旅行者：</span>CHAO (爸爸), YAN (妈妈), ZXX (儿子 - 首席体验官), ZXY (女儿 - 开心果)</p>
+            <p class="subtitle"><span>行程版本：</span><span id="current-date"></span> v8.0 (最新修订)</p>
+            <p class="subtitle"><span>天气概要：</span>贵州八月通常温暖湿润，山区气候多变，日夜温差可能较大。平均气温约为20°C - 30°C。请准备雨具和适应不同温度的衣物。</p>
+        </header>
+
+        <div class="timeline">
+            <!-- Day 1: KWE -> Longli -->
+            <div class="day-section">
+                <div class="day-header">
+                    <span class="day-badge">第一天 (8月1日, 周五) · 夜抵贵阳，安顿龙里</span>
+                </div>
+                <div class="itinerary-item left">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-plane-arrival"></i> 21:30</div>
+                        <div class="location-title"><i class="fas fa-map-marker-alt"></i> 抵达贵阳龙洞堡机场 (KWE)</div>
+                        <div class="description">
+                            <p>顺利抵达贵阳！夜色已深，我们抓紧时间，高效行动。</p>
+                            <p><strong>ZXX首席体验官：</strong>留意机场夜间的航班信息显示和旅客指引是否清晰。</p>
+                            <p><strong>ZXY开心果：</strong>虽然有点晚，但新的冒险就要开始啦！</p>
+                        </div>
+                        <div class="tags"><span class="tag">夜间抵达</span> <span class="tag">机场</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="itinerary-item right">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-suitcase-rolling"></i> 21:30 - 22:15</div>
+                        <div class="location-title"><i class="fas fa-行李箱"></i> 提取行李、办理租车</div>
+                        <div class="description">
+                            <p>提取行李，CHAO爸爸前往租车柜台办理已预订好的车辆手续。YAN妈妈带领ZXX和ZXY在约定地点等候，注意看管好行李。</p>
+                            <p><strong>CHAO爸爸：</strong>仔细核对租车合同条款，检查车辆外观、油量、轮胎等基本状况，确保安全座椅已安装妥当。</p>
+                        </div>
+                        <div class="tags"><span class="tag">租车</span> <span class="tag">行李</span> <span class="tag">家庭协作</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="itinerary-item left">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-moon"></i> 22:15 - 22:45</div>
+                        <div class="location-title"><i class="fas fa-car"></i> 驱车：机场 <i class="fas fa-arrow-right"></i> 龙里县</div>
+                        <div class="description">
+                            <p><strong>驾驶员：</strong>CHAO爸爸。 <strong>用时：</strong>约30分钟。 <strong>路程：</strong>约25公里。</p>
+                            <p>第一晚选择在距离机场较近的龙里县休息，避免夜间长时间驾驶，保证CHAO爸爸精力充沛。</p>
+                            <p><strong>YAN妈妈：</strong>协助导航，留意路况提醒。</p>
+                        </div>
+                        <div class="tags"><span class="tag">夜间驾驶</span> <span class="tag">短途</span> <span class="tag">龙里</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="itinerary-item right">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-key"></i> 22:45 onwards</div>
+                        <div class="location-title"><i class="fas fa-bed"></i> 入住龙里酒店</div>
+                        <div class="description">
+                            <p>抵达龙里，入住预订好的酒店。快速办理入住手续，让孩子们尽快进入梦乡。</p>
+                            <p>如果孩子们饿了，可以在酒店或附近便利店简单补充些许零食或牛奶。今晚早点休息，为明天的精彩旅程储备能量！</p>
+                            <p><strong>住宿：</strong>龙里县舒适型酒店。</p>
+                        </div>
+                        <div class="tags"><span class="tag">酒店入住</span> <span class="tag">休整</span> <span class="tag">夜宵</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+
+            <!-- Day 2: Longli -> Libo (Xiaoqikong) -->
+            <div class="day-section">
+                <div class="day-header">
+                    <span class="day-badge">第二天 (8月2日, 周六) · 奔赴荔波，探秘大小七孔</span>
+                </div>
+                 <div class="itinerary-item left">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-mug-saucer"></i> 08:00 - 08:45</div>
+                        <div class="location-title"><i class="fas fa-mug-saucer"></i> 龙里早餐</div>
+                        <div class="description">
+                            <p>在龙里享用早餐，为今天的荔波之行储备能量！</p>
+                            <p><strong>ZXY开心果：</strong>今天的早餐有什么好吃的呀？</p>
+                        </div>
+                        <div class="tags"><span class="tag">早餐</span> <span class="tag">当地风味</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="itinerary-item right">
+                     <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-road"></i> 08:45 - 12:05</div>
+                        <div class="location-title"><i class="fas fa-road"></i> 驱车：龙里县 <i class="fas fa-arrow-right"></i> 荔波小七孔景区 (东门)</div>
+                        <div class="description">
+                            <p><strong>驾驶员：</strong>CHAO爸爸。</p>
+                            <p><strong>预计用时：</strong><strong class="highlight">3小时20分钟</strong> (含1次20分钟休息)。</p>
+                            <p><strong>路程：</strong>约230公里。</p>
+                            <p>向着‘地球腰带上的绿宝石’进发！沿途欣赏黔南的喀斯特田园风光。CHAO爸爸辛苦了，注意行车安全，适时休息。</p>
+                            <p><strong>YAN妈妈：</strong>准备好路上的娱乐活动，让ZXX和ZXY的旅途不枯燥。</p>
+                        </div>
+                        <div class="tags"><span class="tag">长途驾驶</span> <span class="tag">高速公路</span> <span class="tag">喀斯特风光</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="itinerary-item left">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-utensils"></i> 12:05 - 12:45</div>
+                        <div class="location-title"><i class="fas fa-hamburger"></i> 午餐：小七孔景区附近</div>
+                        <div class="description">
+                            <p>抵达小七孔景区，先用午餐。</p>
+                            <p class="meal-option"><strong>午餐推荐：</strong><br>
+                                <span class="name">A. 荔波石锅鱼</span> <span class="price">(¥80/人)</span> <span class="spice">🌶️</span><br>
+                                <span class="name">B. 农家小炒</span> <span class="price">(¥60/人)</span><br>
+                                <span class="name">C. 景区门口快餐</span> <span class="price">(¥50/人)</span>
+                            </p>
+                            <p><strong>ZXX首席体验官：</strong>观察景区门口的商业布局和人流引导。</p>
+                        </div>
+                        <div class="tags"><span class="tag">午餐</span> <span class="tag">景区周边</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                 <div class="itinerary-item right">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-hiking"></i> 12:45 - 18:45</div>
+                        <div class="location-title"><i class="fas fa-leaf"></i> 游览：荔波小七孔景区 (含大七孔)</div>
+                        <div class="description">
+                            <p>下午集中游览荔波大小七孔的精华部分（5A景区，世界自然遗产地核心区）。全程约6小时，挑战与美景并存！</p>
+                            <p><strong>建议路线 (东门进，西门出或东门返回)：</strong></p>
+                            <p>1. <strong class="highlight">小七孔古桥</strong> (标志性，拍照点)</p>
+                            <p>2. <strong class="highlight">拉雅瀑布 & 68级跌水瀑布</strong> (感受水的灵动)</p>
+                            <p>3. <strong class="highlight">水上森林</strong> (ZXY会非常喜欢在这里玩水，体验“水上漂”，注意安全！)</p>
+                            <p>4. <strong class="highlight">卧龙潭</strong> (碧绿深邃，如宝石镶嵌)</p>
+                            <p>5. (可选，根据时间与体力) 前往<strong class="highlight">大七孔景区</strong>游览其核心景点如<strong class="highlight">天生桥、恐怖峡</strong> (乘船进入，景色雄奇)。</p>
+                            <p><strong>YAN妈妈提示：</strong>夏季水量足，景色优美。水边活动务必注意ZXY的安全，可为ZXY准备溯溪鞋或凉鞋。ZXX爸爸注意防滑。景区内交通车会串联各景点，合理利用。</p>
+                             <div class="story-hook">
+                                <i class="fas fa-book-open"></i> <strong>ZXX的故事线：</strong>小七孔的水为什么这么蓝又这么绿？这些奇特的石头和树木是怎么形成的？这和地理课上学的喀斯特地貌有什么关系？水上森林的树为什么能在水里长这么好？大七孔的天生桥是怎么形成的，它有多高多大？
+                            </div>
+                        </div>
+                        <div class="tags"><span class="tag">世界遗产</span> <span class="tag">自然风光</span> <span class="tag">玩水乐趣</span> <span class="tag">摄影天堂</span> <span class="tag">徒步挑战</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                 <div class="itinerary-item left">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-bus-alt"></i> 18:45 - 19:15</div>
+                        <div class="location-title"><i class="fas fa-car-side"></i> 驱车：小七孔景区 <i class="fas fa-arrow-right"></i> 荔波县城</div>
+                        <div class="description">
+                            <p>结束愉快的游览，前往荔波县城住宿。</p>
+                            <p><strong>驾驶信息：</strong>约30分钟车程。</p>
+                            <p>大家在车上可以分享今天最喜欢的景点和照片。</p>
+                        </div>
+                        <div class="tags"><span class="tag">短途交通</span> <span class="tag">景区接驳</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                 <div class="itinerary-item right">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-hotel"></i> 19:15 onwards</div>
+                        <div class="location-title"><i class="fas fa-concierge-bell"></i> 入住荔波酒店，晚餐</div>
+                        <div class="description">
+                            <p>抵达荔波县城，入住酒店。晚餐在县城解决，品尝当地特色美食。</p>
+                            <p class="meal-option"><strong>晚餐推荐 (荔波县城)：</strong><br>
+                                <span class="name">豆花烤鱼</span> <span class="price">(¥80/人)</span> <span class="spice">🌶️</span><br>
+                                <span class="name">樟江禾香鸡</span> <span class="price">(¥90/人, 清香不辣)</span><br>
+                                <span class="name">荔波腌酸肉</span> <span class="price">(¥70/人)</span> <span class="spice">🌶️🌶️</span>
+                            </p>
+                            <p><strong>住宿：</strong>荔波县城舒适型酒店或特色客栈。</p>
+                            <p><strong>ZXX首席体验官：</strong>荔波县城的夜生活和龙里有什么不同？</p>
+                        </div>
+                        <div class="tags"><span class="tag">酒店入住</span> <span class="tag">当地美食</span> <span class="tag">休闲住宿</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+
+            <!-- Day 3: Libo (Daqikong / Maolan) -->
+            <div class="day-section">
+                <div class="day-header"><span class="day-badge">第三天 (8月3日, 周日) · 荔波茂兰探幽 或 水春河漂流</span></div>
+                <div class="itinerary-item left">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-leaf"></i> 08:30 - 12:00 (或全天)</div>
+                        <div class="location-title"><i class="fas fa-mountain"></i> 茂兰国家级自然保护区</div>
+                        <div class="description">
+                            <p>经过昨日对小七孔景区（含大七孔）的全面探访，今日上午我们将专注于茂兰国家级自然保护区。这里有独特的喀斯特森林生态系统和丰富的生物多样性，深入其中，可以观察到原始的森林植被和奇特的锥状喀斯特峰丛，是进行自然探索和生态学习的好地方。ZXY可能会喜欢寻找独特的植物和昆虫。预计游览3-3.5小时。</p>
+                            <div class="story-hook">
+                                <i class="fas fa-feather-alt"></i> <strong>ZXX的故事线 (茂兰):</strong> 茂兰的森林和我们平时在城市公园看到的有什么不一样？这里有哪些独特的植物和动物？为什么说它是“喀斯特森林生态系统”的宝库？
+                            </div>
+                             <p class="meal-option"><strong>午餐建议：</strong><br>
+                                <span class="name">茂兰景区内/外农家乐</span> <span class="price">(¥60/人)</span><br>
+                                <span class="name">自备干粮，在风景中野餐</span>
+                            </p>
+                        </div>
+                        <div class="tags"><span class="tag">自然探索</span> <span class="tag">徒步</span> <span class="tag">原始生态</span> <span class="tag">世界遗产</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="itinerary-item right">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-swimmer"></i> 13:00 - 15:30 (可选)</div>
+                        <div class="location-title"><i class="fas fa-tint"></i> 水春河漂流 或 自由活动</div>
+                        <div class="description">
+                             <p>午餐后，如果天气情况良好且家人精力充沛，可以考虑体验荔波水春河漂流（温和型💧，约2-2.5小时）。这将是一项轻松愉快的水上活动，为旅程增添更多乐趣。若不参与漂流，则午后可有更多时间在荔波县城稍作休整或提前出发前往西江。</p>
+                            <p><strong>YAN妈妈提示：</strong>漂流具有一定刺激性，需仔细评估ZXY和ZXX爸爸的身体状况和意愿。务必选择正规漂流公司的项目，并全程穿戴救生衣。</p>
+                        </div>
+                        <div class="tags"><span class="tag">水上活动</span> <span class="tag">休闲</span> <span class="tag">可选</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                 <div class="itinerary-item left">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-car"></i> 16:00 - 20:30 (若下午茂兰/漂流后)</div>
+                        <div class="location-title"><i class="fas fa-road"></i> 驱车：荔波 <i class="fas fa-arrow-right"></i> 西江千户苗寨</div>
+                        <div class="description">
+                            <p><strong>驾驶员：</strong>CHAO爸爸。</p>
+                            <p><strong>预计用时：</strong>约4小时30分钟 (含1次20分钟休息)。</p>
+                            <p><strong>路程：</strong>约280公里。</p>
+                            <p>下午适时从荔波出发，驱车前往西江千户苗寨。抵达时可能已是傍晚，直接入住客栈。</p>
+                            <p class="meal-option"><strong>晚餐推荐 (西江千户苗寨)：</strong><br>
+                                <span class="name">客栈晚餐或苗寨内餐馆</span> <span class="price">(¥80-100/人)</span>
+                            </p>
+                            <p><strong>住宿：</strong>西江千户苗寨内特色客栈。</p>
+                        </div>
+                        <div class="tags"><span class="tag">长途驾驶</span> <span class="tag">前往苗寨</span> <span class="tag">夜宿西江</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+
+            <!-- Day 4: Libo -> Xijiang -->
+            <div class="day-section">
+                <div class="day-header"><span class="day-badge">第四天 · 西江风情，苗寨画卷</span></div>
+                <div class="itinerary-item right">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-camera-retro"></i> 上午</div>
+                        <div class="location-title"><i class="fas fa-coffee"></i> 西江苗寨晨景与文化体验</div>
+                        <div class="description">
+                            <p>早起可欣赏苗寨晨雾缭绕的宁静之美。早餐后，深入体验苗寨文化：</p>
+                            <p>1. <strong class="highlight">西江苗族博物馆：</strong>了解苗族历史、服饰、习俗。ZXX爸爸重点参观。</p>
+                            <p>2. <strong class="highlight">芦笙场：</strong>观看苗族歌舞表演（留意表演时间）。ZXY可能会被热闹的歌舞吸引。</p>
+                            <p>3. <strong class="highlight">风雨桥与吊脚楼群：</strong>穿行于古朴的木质建筑间，感受苗家生活气息。</p>
+                            <p>4. <strong class="highlight">嘎歌古巷：</strong>体验蜡染、银饰等非遗手工艺。</p>
+                            <div class="story-hook">
+                                <i class="fas fa-users-cog"></i> <strong>ZXX的故事线：</strong>苗族的吊脚楼为什么这么建？有什么特别的功能吗？他们的银饰和服饰图案有什么含义？苗族的历史是怎样的？
+                            </div>
+                        </div>
+                        <div class="tags"><span class="tag">文化体验</span> <span class="tag">表演</span> <span class="tag">非遗</span> <span class="tag">晨景</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="itinerary-item left">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-utensils"></i> 中午</div>
+                        <div class="location-title"><i class="fas fa-drumstick-bite"></i> 午餐：苗寨特色</div>
+                        <div class="description">
+                            <p>在苗寨内品尝地道苗家菜。</p>
+                             <p class="meal-option"><strong>午餐推荐：</strong><br>
+                                <span class="name">苗家酸汤鱼</span> <span class="price">(¥90/人)</span> <span class="spice">🌶️🌶️</span><br>
+                                <span class="name">腊肉炒折耳根</span> <span class="price">(¥70/人, 特色风味)</span> <span class="spice">🌶️</span><br>
+                                <span class="name">客栈家常菜</span> <span class="price">(¥80/人)</span>
+                            </p>
+                        </div>
+                        <div class="tags"><span class="tag">当地美食</span> <span class="tag">苗家风味</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="itinerary-item right">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-eye"></i> 下午 - 傍晚</div>
+                        <div class="location-title"><i class="fas fa-star"></i> 自由活动，观景台赏夜景，品长桌宴</div>
+                        <div class="description">
+                            <p>下午可自由在苗寨内穿梭，购买手工艺品，或在田园观光区散步。可以租借苗族服饰拍照（YAN妈妈和ZXY可以体验）。</p>
+                            <p>傍晚前往<strong class="highlight">观景台</strong>，拍摄苗寨全景和万家灯火的壮丽夜景。</p>
+                            <p><strong>YAN妈妈提示：</strong>西江商业化程度较高，购买纪念品时理性消费。西江千户苗寨“一票多日使用制”请在购票时与景区确认具体执行细则。</p>
+                            <p class="meal-option"><strong>晚餐推荐：</strong><br>
+                                <span class="name">苗家特色长桌宴</span> <span class="price">(¥120/人, 部分菜品带🌶️, 体验高山流水敬酒)</span><br>
+                                <span class="name">观景台附近餐厅</span> <span class="price">(¥100/人, 边吃边赏景)</span>
+                            </p>
+                            <p><strong>住宿：</strong>西江苗寨内特色客栈。</p>
+                        </div>
+                        <div class="tags"><span class="tag">自由活动</span> <span class="tag">夜景</span> <span class="tag">美食体验</span> <span class="tag">摄影</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+
+            <!-- Day 5: Xijiang -> Guiyang -->
+            <div class="day-section">
+                <div class="day-header"><span class="day-badge">第五天 · 告别苗寨，安抵贵阳</span></div>
+                 <div class="itinerary-item left">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-mug-hot"></i> 上午</div>
+                        <div class="location-title"><i class="fas fa-store-alt"></i> 西江苗寨自由活动/购物</div>
+                        <div class="description">
+                            <p>上午继续在西江苗寨内自由活动，可以补拍一些照片，购买之前看中的手工艺品，或者只是悠闲地在寨子里走走，感受最后的苗家风情。</p>
+                            <p><strong>ZXX爸爸建议：</strong>可以和当地老人聊聊天，了解更多苗家故事。</p>
+                        </div>
+                        <div class="tags"><span class="tag">休闲</span> <span class="tag">购物</span> <span class="tag">文化交流</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="itinerary-item right">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-car"></i> 12:00 - 15:00</div>
+                        <div class="location-title"><i class="fas fa-route"></i> 驱车：西江 <i class="fas fa-arrow-right"></i> 贵阳市</div>
+                        <div class="description">
+                            <p>在西江享用午餐后，CHAO爸爸驾车返回贵阳市。</p>
+                            <p><strong>驾驶信息：</strong>约200公里，预计3小时。途中安排一次休息。</p>
+                            <p>抵达贵阳后，前往酒店办理入住，下午可以安排休息或自由活动，为CHAO爸爸缓解驾驶疲劳。</p>
+                             <p class="meal-option"><strong>午餐建议 (西江或途中)：</strong><br>
+                                <span class="name">苗家米粉/简餐</span> <span class="price">(¥50/人)</span><br>
+                                <span class="name">服务区便餐</span> <span class="price">(¥40/人)</span>
+                            </p>
+                        </div>
+                        <div class="tags"><span class="tag">交通</span> <span class="tag">返回都市</span> <span class="tag">休整</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="itinerary-item left">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-utensils"></i> 傍晚</div>
+                        <div class="location-title"><i class="fas fa-city"></i> 贵阳晚餐与住宿</div>
+                        <div class="description">
+                            <p>晚上可以在贵阳市区选择一家特色餐厅，品尝之前未尝试过的黔菜风味。</p>
+                             <p class="meal-option"><strong>晚餐推荐 (贵阳市)：</strong><br>
+                                <span class="name">树厨</span> <span class="price">(创意黔菜, ¥120/人)</span> <span class="spice">🌶️</span><br>
+                                <span class="name">金牌罗记肠旺面</span> <span class="price">(¥40/人, 地道小吃)</span> <span class="spice">🌶️</span><br>
+                                <span class="name">酒店附近品质餐厅</span> <span class="price">(¥100/人)</span>
+                            </p>
+                            <p><strong>住宿：</strong>贵阳市区舒适型酒店。</p>
+                        </div>
+                        <div class="tags"><span class="tag">都市美食</span> <span class="tag">住宿</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+
+            <!-- Day 6: Guiyang -> Huangguoshu -->
+            <div class="day-section">
+                <div class="day-header"><span class="day-badge">第六天 · 壮美黄果树，瀑布交响曲</span></div>
+                <div class="itinerary-item right">
+                     <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-car"></i> 上午</div>
+                        <div class="location-title"><i class="fas fa-road"></i> 贵阳 <i class="fas fa-arrow-right"></i> 黄果树景区</div>
+                        <div class="description">
+                            <p>早餐后，CHAO爸爸驾车前往黄果树景区。</p>
+                            <p><strong>驾驶信息：</strong>约130公里，预计1小时45分钟。途中安排一次简短休息。</p>
+                            <p>抵达后直接进入景区，建议购买景区交通车票。黄果树是5A景区，享受“一票多日使用制”（请在购票时确认）。</p>
+                        </div>
+                        <div class="tags"><span class="tag">交通</span> <span class="tag">前往景区</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="itinerary-item left">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-waterfall"></i> 全天</div>
+                        <div class="location-title"><i class="fas fa-tree"></i> 黄果树瀑布群游览</div>
+                        <div class="description">
+                            <p>建议游览顺序：</p>
+                            <p>1. <strong class="highlight">陡坡塘瀑布：</strong>《西游记》取景地，瀑顶宽阔。ZXY可能会对师徒四人元素感兴趣。</p>
+                            <p>2. <strong class="highlight">天星桥景区：</strong>分为上下半段，有数生步、天星洞、水上石林、银链坠潭瀑布等。ZXX爸爸可欣赏奇石盆景。</p>
+                            <p>3. <strong class="highlight">黄果树大瀑布：</strong>核心景区，可穿行水帘洞（夏季水量大可能关闭或湿滑，注意安全）。</p>
+                            <p><strong>YAN妈妈提示：</strong>夏季水量大，瀑布边水汽重，为ZXY和ZXX爸爸准备雨衣或防水外套，保护好电子设备。</p>
+                            <div class="story-hook">
+                                <i class="fas fa-tint"></i> <strong>ZXX的故事线：</strong>黄果树瀑布群是怎么形成的？为什么这里会有这么多瀑布？水帘洞真的像《西游记》里那样吗？这些瀑布对周围的生态环境有什么影响？
+                            </div>
+                            <p class="meal-option"><strong>午餐建议 (景区内或附近)：</strong><br>
+                                <span class="name">景区快餐</span> <span class="price">(¥50/人)</span><br>
+                                <span class="name">农家小炒</span> <span class="price">(¥60/人)</span><br>
+                                <span class="name">自备干粮</span>
+                            </p>
+                            <p><strong>恶劣天气预案：</strong>若遇大雨，重点游览天星桥下半段的天星洞（溶洞），或考虑前往安顺市区的<span class="highlight">安顺市博物馆</span>了解当地历史文化。</p>
+                        </div>
+                        <div class="tags"><span class="tag">自然奇观</span> <span class="tag">徒步</span> <span class="tag">摄影</span> <span class="tag">西游记</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                 <div class="itinerary-item right">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-utensils"></i> 傍晚</div>
+                        <div class="location-title"><i class="fas fa-hotel"></i> 晚餐与住宿 (黄果树镇/安顺)</div>
+                        <div class="description">
+                            <p class="meal-option"><strong>晚餐推荐：</strong><br>
+                                <span class="name">黄果树镇农家乐</span> <span class="price">(¥80/人, 品尝当地特色菜，如虹鳟鱼)</span><br>
+                                <span class="name">安顺市区餐馆</span> <span class="price">(¥70/人, 更多选择)</span><br>
+                                <span class="name">夺夺粉火锅</span> <span class="price">(¥60/人)</span> <span class="spice">🌶️🌶️</span>
+                            </p>
+                            <p><strong>住宿：</strong>黄果树景区附近特色客栈或安顺市区酒店。</p>
+                        </div>
+                        <div class="tags"><span class="tag">美食</span> <span class="tag">住宿</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+
+            <!-- Day 7: Huangguoshu -> Longgong -> Zhijin County -->
+            <div class="day-section">
+                <div class="day-header"><span class="day-badge">第七天 · 水洞龙宫，夜宿织金</span></div>
+                <div class="itinerary-item left">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-ship"></i> 上午</div>
+                        <div class="location-title"><i class="fas fa-water"></i> 龙宫风景区</div>
+                        <div class="description">
+                            <p>早餐后从黄果树/安顺出发前往龙宫（5A景区，“一票多日使用制”）。</p>
+                            <p><strong>驾驶信息：</strong>约30公里，预计30分钟。</p>
+                            <p>核心体验是乘船游览水溶洞，ZXY会觉得非常新奇有趣。主要景点：一、二进龙宫、龙门飞瀑、旋塘等。ZXX爸爸可欣赏喀斯特地貌奇观。</p>
+                            <div class="story-hook">
+                                <i class="fas fa-gem"></i> <strong>ZXX的故事线：</strong>龙宫的水为什么这么清澈？这些水下溶洞是怎么形成的？“龙”的传说和这里的地貌有什么关系？
+                            </div>
+                        </div>
+                        <div class="tags"><span class="tag">溶洞</span> <span class="tag">乘船</span> <span class="tag">自然</span> <span class="tag">地质探秘</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="itinerary-item right">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-car"></i> 中午</div>
+                        <div class="location-title"><i class="fas fa-road"></i> 龙宫 <i class="fas fa-arrow-right"></i> 织金县</div>
+                        <div class="description">
+                            <p>CHAO爸爸驾车前往织金县。</p>
+                            <p><strong>驾驶信息：</strong>约150公里，预计2小时30分钟。途中安排休息。</p>
+                             <p class="meal-option"><strong>午餐建议 (龙宫外或途中)：</strong><br>
+                                <span class="name">当地餐馆</span> <span class="price">(¥50/人)</span><br>
+                                <span class="name">服务区简餐</span> <span class="price">(¥40/人)</span>
+                            </p>
+                        </div>
+                        <div class="tags"><span class="tag">交通</span> <span class="tag">行车</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="itinerary-item left">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-utensils"></i> 傍晚</div>
+                        <div class="location-title"><i class="fas fa-hotel"></i> 抵达织金县，晚餐与住宿</div>
+                        <div class="description">
+                            <p>抵达织金县后，办理酒店入住。稍作休整，为明天游览织金洞做准备。</p>
+                            <p class="meal-option"><strong>晚餐推荐 (织金县)：</strong><br>
+                                <span class="name">织金烙锅</span> <span class="price">(¥70/人)</span> <span class="spice">🌶️🌶️</span><br>
+                                <span class="name">竹荪炖鸡</span> <span class="price">(¥80/人, 不辣滋补)</span><br>
+                                <span class="name">宫保鸡丁发源地特色菜</span> <span class="price">(¥90/人)</span> <span class="spice">🌶️</span>
+                            </p>
+                            <p><strong>住宿：</strong>织金县酒店。</p>
+                        </div>
+                        <div class="tags"><span class="tag">美食</span> <span class="tag">住宿</span> <span class="tag">准备</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+
+            <!-- Day 8: Zhijin Cave -> Qingyan -->
+            <div class="day-section">
+                <div class="day-header"><span class="day-badge">第八天 · 地下瑰宝织金洞，古镇青岩夜</span></div>
+                <div class="itinerary-item right">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-gem"></i> 上午</div>
+                        <div class="location-title"><i class="fas fa-landmark"></i> 织金洞</div>
+                        <div class="description">
+                            <p>早餐后游览“中国最美溶洞”之称的织金洞（5A景区，“一票多日使用制”）。洞内体量宏大，石笋、石柱、石幔千姿百态，如地下宫殿。ZXX爸爸和ZXY都会为其壮丽景象感到惊叹。</p>
+                            <p><strong>YAN妈妈提示：</strong>全程步行约2-3小时，对体力有一定要求。洞内恒温约16°C，比外面凉爽，可给ZXX爸爸和ZXY带上薄外套。听从导游安排，注意脚下安全。</p>
+                            <div class="story-hook">
+                                <i class="fas fa-lightbulb"></i> <strong>ZXX的故事线：</strong>织金洞里的钟乳石是怎么形成的？为什么它们有这么多不同的形状和颜色？这个洞穴有多古老？里面有没有发现过什么古生物的化石？
+                            </div>
+                        </div>
+                        <div class="tags"><span class="tag">溶洞奇观</span> <span class="tag">地质</span> <span class="tag">摄影</span> <span class="tag">科普</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="itinerary-item left">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-car"></i> 下午</div>
+                        <div class="location-title"><i class="fas fa-road"></i> 织金洞 <i class="fas fa-arrow-right"></i> 青岩古镇</div>
+                        <div class="description">
+                            <p>午餐后，CHAO爸爸驾车前往青岩古镇。</p>
+                            <p><strong>驾驶信息：</strong>约180公里，预计3小时。途中安排休息。</p>
+                             <p class="meal-option"><strong>午餐建议 (织金洞景区外或途中)：</strong><br>
+                                <span class="name">当地特色菜</span> <span class="price">(¥60/人)</span><br>
+                                <span class="name">服务区简餐</span> <span class="price">(¥40/人)</span>
+                            </p>
+                        </div>
+                        <div class="tags"><span class="tag">交通</span> <span class="tag">前往古镇</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="itinerary-item right">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-archway"></i> 傍晚</div>
+                        <div class="location-title"><i class="fas fa-hotel"></i> 抵达青岩古镇，入住并夜游</div>
+                        <div class="description">
+                            <p>抵达青岩古镇（5A景区，“一票多日使用制”）后办理入住。傍晚时分，游人渐少，可以悠闲地逛逛明清石板街巷，感受古镇宁静的氛围。</p>
+                            <div class="story-hook">
+                                <i class="fas fa-history"></i> <strong>ZXX的故事线：</strong>青岩古镇为什么建在这里？它在古代起过什么作用？这些古老的城墙和街道见证了哪些历史故事？
+                            </div>
+                            <p class="meal-option"><strong>晚餐推荐 (青岩古镇)：</strong><br>
+                                <span class="name">青岩状元蹄</span> <span class="price">(¥80/人, 特色卤猪脚，ZXY可能喜欢)</span><br>
+                                <span class="name">青岩豆腐圆子/玫瑰糖等小吃</span> <span class="price">(¥50/人)</span><br>
+                                <span class="name">古镇农家菜</span> <span class="price">(¥70/人, 可选不辣)</span>
+                            </p>
+                            <p><strong>住宿：</strong>青岩古镇内特色客栈或附近酒店。</p>
+                        </div>
+                        <div class="tags"><span class="tag">古镇</span> <span class="tag">美食</span> <span class="tag">住宿</span> <span class="tag">夜游</span> <span class="tag">历史感</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+
+            <!-- Day 9: Qingyan -> Guiyang (Jiaxiu/Qianling) -->
+            <div class="day-section">
+                <div class="day-header"><span class="day-badge">第九天 · 古镇晨光，贵阳雅趣</span></div>
+                <div class="itinerary-item left">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-coffee"></i> 上午</div>
+                        <div class="location-title"><i class="fas fa-chess-rook"></i> 青岩古镇深度游览</div>
+                        <div class="description">
+                            <p>早餐后，趁着清晨的宁静，再次游览古镇。主要看点：</p>
+                            <p>1. <strong class="highlight">古城墙：</strong>走上城墙，俯瞰古镇布局。</p>
+                            <p>2. <strong class="highlight">名人故居：</strong>如周恩来父亲曾居住地、赵状元府等。</p>
+                            <p>3. <strong class="highlight">寺庙与教堂：</strong>体现古镇宗教文化的交融，如迎祥寺、天主堂等。ZXX爸爸可多了解古镇的历史和建筑。</p>
+                            <p><strong>ZXY开心果活动：</strong>可以在古镇小巷里寻宝，找找特色小玩意儿。</p>
+                        </div>
+                        <div class="tags"><span class="tag">古镇文化</span> <span class="tag">历史</span> <span class="tag">休闲</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="itinerary-item right">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-car"></i> 中午</div>
+                        <div class="location-title"><i class="fas fa-road"></i> 青岩古镇 <i class="fas fa-arrow-right"></i> 贵阳市</div>
+                        <div class="description">
+                            <p>在青岩古镇享用午餐后，CHAO爸爸驾车返回贵阳市区。</p>
+                            <p><strong>驾驶信息：</strong>约35公里，预计1小时。</p>
+                            <p>抵达贵阳后，入住酒店，下午安排市区游览。</p>
+                            <p class="meal-option"><strong>午餐建议 (青岩古镇)：</strong><br>
+                                <span class="name">特色小吃组合</span> <span class="price">(¥60/人)</span><br>
+                                <span class="name">古镇餐馆</span> <span class="price">(¥70/人)</span>
+                            </p>
+                        </div>
+                        <div class="tags"><span class="tag">交通</span> <span class="tag">返回都市</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="itinerary-item left">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-city"></i> 下午</div>
+                        <div class="location-title"><i class="fas fa-landmark"></i> 贵阳市区游览 (二选一或组合)</div>
+                        <div class="description">
+                            <p>重返贵阳，感受省会城市的魅力：</p>
+                            <p>1. <strong class="highlight">甲秀楼：</strong>贵阳的标志性建筑，了解城市历史。ZXX爸爸会对这里的历史文化感兴趣。</p>
+                            <div class="story-hook">
+                                <i class="fas fa-archway"></i> <strong>ZXX的故事线 (甲秀楼):</strong> 甲秀楼为什么叫“甲秀”？它建在南明河中的巨石上有什么讲究？这座楼见证了贵阳怎样的变迁？
+                            </div>
+                            <p>2. <strong class="highlight">黔灵山公园：</strong>城市中的天然氧吧，可以看到可爱的猕猴。ZXY可能会喜欢看小猴子，但务必注意安全，不主动喂食，不挑逗动物。</p>
+                             <div class="story-hook">
+                                <i class="fas fa-paw"></i> <strong>ZXX的故事线 (黔灵山公园):</strong> 黔灵山的猴子是野生的吗？它们和人类的相处模式是怎样的？公园里的弘福寺有什么故事？
+                            </div>
+                            <p><strong>YAN妈妈提示：</strong>根据家人精力选择，不必过于劳累。</p>
+                             <p class="meal-option"><strong>晚餐推荐 (贵阳市)：</strong><br>
+                                <span class="name">但家香酥鸭</span> <span class="price">(¥70/人, 特色黔菜)</span><br>
+                                <span class="name">贵阳特色火锅</span> <span class="price">(¥100/人, 如豆米火锅)</span> <span class="spice">🌶️</span>
+                            </p>
+                            <p><strong>住宿：</strong>贵阳市区舒适型酒店。</p>
+                        </div>
+                        <div class="tags"><span class="tag">都市观光</span> <span class="tag">文化地标</span> <span class="tag">自然公园</span> <span class="tag">美食</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+
+            <!-- Day 10: Guiyang -> KWE Departure -->
+            <div class="day-section">
+                <div class="day-header"><span class="day-badge">第十天 · 贵阳悠游，告别黔程</span></div>
+                 <div class="itinerary-item right">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-shopping-bag"></i> 上午</div>
+                        <div class="location-title"><i class="fas fa-gift"></i> 贵阳市区自由活动/购物</div>
+                        <div class="description">
+                            <p>根据航班时间，上午可以在贵阳市区自由活动。可以去逛逛当地的特色市集，或者购买一些贵州特产作为伴手礼，如茶叶、蜡染、银饰、特色食品等。</p>
+                            <p><strong>YAN妈妈：</strong>可以提前列好购物清单，高效采购。</p>
+                            <p><strong>ZXX首席体验官：</strong>观察贵阳的商业形态，和之前去过的城市有什么不同？</p>
+                        </div>
+                        <div class="tags"><span class="tag">休闲购物</span> <span class="tag">当地特产</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="itinerary-item left">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-utensils"></i> 中午</div>
+                        <div class="location-title"><i class="fas fa-concierge-bell"></i> 告别午餐</div>
+                        <div class="description">
+                            <p>在贵阳享用最后一顿具有贵州特色的午餐，回味这几天的美食之旅。</p>
+                            <p class="meal-option"><strong>午餐建议 (贵阳市)：</strong><br>
+                                <span class="name">选择一家家人都喜欢的餐厅</span> <span class="price">(¥80-100/人)</span><br>
+                                <span class="name">品尝未试过的黔菜</span>
+                            </p>
+                        </div>
+                        <div class="tags"><span class="tag">美食回顾</span> <span class="tag">告别宴</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="itinerary-item right">
+                    <div class="item-card">
+                        <div class="time-badge"><i class="fas fa-plane-departure"></i> 下午</div>
+                        <div class="location-title"><i class="fas fa-car-side"></i> 贵阳市区 <i class="fas fa-arrow-right"></i> 贵阳龙洞堡机场 (KWE)</div>
+                        <div class="description">
+                            <p>根据航班时间，CHAO爸爸驾车适时离开市区，前往贵阳龙洞堡机场。</p>
+                            <p><strong>驾驶信息：</strong>约30-40分钟车程，视酒店位置而定。</p>
+                            <p>预留充足时间办理还车手续和登机手续。圆满结束愉快的贵州自驾之旅！期待下次的家庭旅行！</p>
+                            <p><strong>全家总结：</strong>分享旅途中最难忘的瞬间，ZXY开心果可以画一幅画总结旅程哦！</p>
+                        </div>
+                        <div class="tags"><span class="tag">返程</span> <span class="tag">交通</span> <span class="tag">圆满结束</span></div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div> <!-- End of .timeline -->
+
+        <!-- Supplementary Sections -->
+        <div class="supplementary-section transport-info-section">
+            <h2><i class="fas fa-route mr-2"></i>交通信息总览</h2>
+            <div class="mermaid-container">
+                <div class="mermaid" id="routeFlowchart">
+                    graph TD
+                        A[贵阳龙洞堡机场 KWE Arrival] --> B(龙里县 Night 1);
+                        B --> C(荔波县 Xiaoqikong/Maolan);
+                        C --> D(西江千户苗寨);
+                        D --> E(贵阳市);
+                        E --> F(黄果树景区);
+                        F --> G(龙宫景区 Visit);
+                        G --> H(织金县);
+                        H --> I(织金洞 Visit);
+                        I --> J(青岩古镇);
+                        J --> E;
+                        E --> K[贵阳龙洞堡机场 KWE Departure];
+                </div>
+            </div>
+            <p><strong>路况说明：</strong>贵州省内高速公路网络发达，大部分路段路况良好。但部分景区连接道路可能为国道或省道，山区路段弯多坡急，雨季需注意防滑和落石。CHAO爸爸务必谨慎驾驶，严格遵守交通规则，保证充足休息，避免疲劳驾驶和夜间行车。</p>
+            <p><strong class="highlight">CHAO爸爸的驾驶休息原则：</strong> 每累计驾驶150分钟（2.5小时），务必休息至少20分钟。单日总驾驶时间尽量控制在6-8小时内。</p>
+        </div>
+
+        <div class="bento-grid-container">
+            <!-- Bento Box for Accommodation -->
+            <div class="bento-box accommodation-tips">
+                <h3><i class="fas fa-bed mr-2"></i>住宿建议</h3>
+                <ul>
+                    <li>提前通过主流OTA平台（如携程、去哪儿）预订，尤其热门景区及西江苗寨。</li>
+                    <li>仔细查看住宿评价，关注卫生、安静程度。</li>
+                    <li>自驾游请注意停车便利性。</li>
+                    <li>选择范围从业经济型到舒适型均有。</li>
+                </ul>
+            </div>
+
+            <!-- Bento Box for Dining -->
+            <div class="bento-box dining-tips">
+                <h3><i class="fas fa-utensils mr-2"></i>餐饮建议</h3>
+                <ul>
+                    <li>贵州菜特色为酸辣，可要求调整辣度。</li>
+                    <li>行程提供多档餐厅建议 (经济¥50, 特色¥80, 品质¥120/人)。</li>
+                    <li>鼓励尝试当地特色小吃，丰富体验。</li>
+                    <li class="highlight">特别注意ZXX爸爸的饮食习惯，安排清淡口味。</li>
+                </ul>
+            </div>
+
+            <!-- Bento Box for Policies & Apps -->
+            <div class="bento-box policies-apps">
+                <h3><i class="fas fa-file-alt mr-2"></i>重要App与政策</h3>
+                <ul>
+                    <li><strong>“一码游贵州”小程序：</strong>建议全员注册，用于预约、购票、健康申报等。</li>
+                    <li><strong>门票优惠：</strong>携带学生证(ZXX)、老年证(ZXX爸爸)、儿童证件(ZXY)享优惠。主动出示。</li>
+                </ul>
+            </div>
+
+            <!-- Bento Box for Scenic Spot Tips -->
+            <div class="bento-box scenic-spot-tips">
+                <h3><i class="fas fa-map-marked-alt mr-2"></i>景区游览提示</h3>
+                <ul>
+                    <li><strong>“一票多日使用制”：</strong>黄果树、龙宫、小七孔、织金洞、青岩古镇、西江苗寨等5A景区可能适用（通常5日内凭身份证）。</li>
+                    <li class="highlight">具体执行细则购票时与景区确认，尤其西江苗寨。</li>
+                </ul>
+            </div>
+
+            <!-- Bento Box for Travel Prep -->
+            <div class="bento-box travel-prep">
+                <h3><i class="fas fa-suitcase-rolling mr-2"></i>出行准备</h3>
+                <ul>
+                    <li><strong>天气与衣物：</strong>八月雨季湿润，温差大。备夏装、薄外套/冲锋衣、雨具、舒适徒步鞋/溯溪鞋、防晒用品。</li>
+                    <li><strong>现金：</strong>备适量现金，部分场景可能需要。</li>
+                    <li><strong class="highlight">预算简述：</strong>详细预算另附 (租车、油费、住宿、门票、餐饮等)。</li>
+                </ul>
+            </div>
+
+            <!-- Bento Box for Health & Emergency -->
+            <div class="bento-box health-emergency">
+                <h3><i class="fas fa-medkit mr-2"></i>健康与应急</h3>
+                <ul>
+                    <li><strong>常用药品：</strong>感冒药、肠胃药、晕车药、创可贴、驱蚊花露水、个人药品。</li>
+                </ul>
+            </div>
+
+            <!-- Bento Box for Core Packing List -->
+            <div class="bento-box packing-list">
+                <h3><i class="fas fa-clipboard-list mr-2"></i>打包清单核心</h3>
+                <ul>
+                    <li>身份证、驾照（CHAO爸爸）。</li>
+                    <li>充电宝、多孔充电器、相机。</li>
+                    <li>ZXY小玩具/书籍、保温杯。</li>
+                    <li>车上零食水、双肩包。</li>
+                    <li>尊重少数民族礼仪。</li>
+                </ul>
+            </div>
+
+            <!-- Bento Box for Rafting Tips -->
+            <div class="bento-box rafting-tips">
+                <h3><i class="fas fa-water mr-2"></i>漂流小贴士</h3>
+                <p>贵州夏季漂流资源丰富。选择时请根据ZXY年龄、体力，并提前确认开放情况和安全规定。</p>
+                <ul>
+                    <li><strong>荔波水春河漂流 💧：</strong>刺激适中，风景好，适合家庭。</li>
+                    <li><strong>福泉蛤蚌河：</strong>(需核实项目类型) 可能为峡谷观光。</li>
+                    <li><strong>修文桃源河漂流 💧：</strong>魔幻漂流，趣味性强，多河段可选。</li>
+                    <li><strong>施秉杉木河漂流 🌊：</strong>水质清，较平缓，适合初学/家庭。</li>
+                    <li><strong>南江大峡谷漂流 💧➡️🌊：</strong>休闲/激情可选。</li>
+                </ul>
+                <p class="highlight">重要提示：漂流受天气影响大。儿童参与需成人陪同，遵守安全规定，穿戴救生衣及安全帽。</p>
+            </div>
+
+            <!-- Bento Box for Alternative Attractions -->
+            <div class="bento-box alternative-attractions">
+                <h3><i class="fas fa-map-pin mr-2"></i>备选景点参考</h3>
+                <p>若时间充裕或行程调整，可考虑以下备选：</p>
+                <ul>
+                    <li><strong>贵阳市区周边：</strong>
+                        <ul>
+                            <li>天河潭 (山水溶洞景区)</li>
+                            <li>平塘FAST天眼 (需提前预约, 科普意义大, 距离远)</li>
+                        </ul>
+                    </li>
+                    <li><strong>其他特色点：</strong>
+                        <ul>
+                            <li>安顺普定农耕庄园度假村 (亲子农耕体验)</li>
+                            <li>坝陵河大桥蹦极 (远观世界级蹦极)</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="highlight">提示：部分景点较远或有特殊要求，请提前规划。</p>
+            </div>
+        </div>
+
+        <footer style="text-align: center; padding: 20px 0; margin-top: 40px; color: var(--text-color-light); border-top: 1px solid rgba(255,255,255,0.2);">
+            <p>&copy; <span id="current-year"></span> 为ZXX, ZXY, YAN, CHAO一家专属定制的贵州之旅。祝旅途愉快！</p>
+            <p style="font-size: 0.9em; opacity: 0.8;">行程规划与设计 by AI Agent</p>
+        </footer>
+    </div> <!-- End of .container -->
+
+    <script>
+        // Set current date for subtitle and year for footer
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Initialize Mermaid.js
+        mermaid.initialize({ startOnLoad: true, theme: 'base', securityLevel: 'loose', 
+            fontFamily: '"Noto Sans SC", sans-serif',
+            themeVariables: {
+                primaryColor: getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim(),
+                mainBkg: '#f0f4f8', // Light background for diagrams
+                nodeBorder: getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim(),
+                lineColor: getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim(),
+                textColor: getComputedStyle(document.documentElement).getPropertyValue('--text-color').trim(),
+                fontSize: '14px'
+            }
+        });
+
+
+        // Card hover effect (already in CSS :hover, but can be enhanced)
+        const cards = document.querySelectorAll('.item-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20; // Adjust divisor for sensitivity
+                const rotateY = (centerX - x) / 20;
+                // card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                // card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+            });
+             // Expand card on click (optional)
+            card.addEventListener('click', () => {
+                // card.classList.toggle('expanded'); // Define .expanded style in CSS if needed
+            });
+        });
+
+        // Simple parallax for floating elements (can be enhanced)
+        const floatingElements = document.querySelector('.floating-elements');
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            if (floatingElements) {
+                 floatingElements.style.transform = `translateY(${scrollY * 0.1}px)`;
+            }
+        });
+
+        // Page load animations (already in CSS, this is for potential JS-driven ones)
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+
+    </script>
+</body>
+</html>
